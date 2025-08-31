@@ -39,3 +39,4 @@ def main():
     tr=triangulo('triangulo',5,2)
     tr.calculararea()
 main()
+
