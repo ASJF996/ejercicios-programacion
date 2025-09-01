@@ -6,12 +6,15 @@ class Paleta:
     def mostrar_informacion(self):
         print(f"La paleta de {self.sabor} cuesta: ${self.precio}")
 
+    def mostrar_detalle(self):
+        print("Esta paleta no tiene detalles adicionales.")
+
 class PaletaAgua(Paleta):
     def __init__(self, sabor, precio, base_agua: bool):
         super().__init__(sabor, precio)
         self.base_agua = base_agua
 
-    def mostrar_base_agua(self):
+    def mostrar_detalle(self):
         if self.base_agua:
             print("La paleta tiene base de agua.")
         else:
@@ -22,22 +25,22 @@ class PaletaCrema(Paleta):
         super().__init__(sabor, precio)
         self.cremosa = cremosa
 
-    def mostrar_textura_cremosa(self):
+    def mostrar_detalle(self):
         if self.cremosa:
             print("La paleta es cremosa.")
         else:
             print("La paleta no es cremosa.")
 
 def main():
-    p1 = PaletaAgua('mango', 4, True)
-    p1.mostrar_informacion()
-    p1.mostrar_base_agua()
+    paletas = [
+        PaletaAgua('Mango', 4, True),
+        PaletaCrema('Nuez', 8, False)
+    ]
 
-    print("---")
-
-    p2 = PaletaCrema('Nuez', 8, False)
-    p2.mostrar_informacion()
-    p2.mostrar_textura_cremosa()
+    for paleta in paletas:
+        paleta.mostrar_informacion()
+        paleta.mostrar_detalle()
+        print("---")
 
 if __name__ == "__main__":
     main()
